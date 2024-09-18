@@ -1,0 +1,42 @@
+{
+  "name": "i-way-test",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000i\u0000-\u0000w\u0000a\u0000y\u0000-\u0000t\u0000e\u0000s\u0000t\u0000\r\u0000 \u0000",
+  "private": "true",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VoloschenkoVladislav/i-way-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VoloschenkoVladislav/i-way-test/issues"
+  },
+  "homepage": "https://github.com/VoloschenkoVladislav/i-way-test#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-react": "^7.24.7",
+    "babel-loader": "^9.2.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "sass-loader": "^16.0.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.2.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
+    "sass": "^1.78.0"
+  }
+}
