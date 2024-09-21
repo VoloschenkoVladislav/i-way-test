@@ -1,4 +1,6 @@
+import Cookies from 'js-cookie';
 import { createSlice } from '@reduxjs/toolkit';
+import { appAPI } from './AppService';
 
 const initialState = {
   accessToken: Cookies.get('access_token') || null,
@@ -11,10 +13,10 @@ export const appSlice = createSlice({
   extraReducers: builder => {
     builder
       .addMatcher(appAPI.endpoints.login.matchFulfilled, (state, action) => {
-        if (action.payload.data) {
-          const { access_token, expires } = action.payload.data;
-          state.accessToken = `Bearer ${access_token}`;
-          Cookies.set('access_token', `Bearer ${access_token}`, { expires: new Date(expires) });
+        if (action.payload) {
+          const { token } = action.payload;
+          state.accessToken = `Bearer ${token}`;
+          Cookies.set('access_token', `Bearer ${token}`);
         }
       })
   }

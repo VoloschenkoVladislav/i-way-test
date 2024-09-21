@@ -4,7 +4,7 @@ import { appAPI } from './AppService';
 
 const rootReducer = combineReducers({
   appReducer,
-  [authAPI.reducerPath]: authAPI.reducer,
+  [appAPI.reducerPath]: appAPI.reducer,
 });
 
 export const setupStore = () => {

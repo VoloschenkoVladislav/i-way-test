@@ -1,9 +1,7 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import Cookies from 'js-cookie';
-import { BASE_BACKEND_URL } from '../constants/api';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: `${BASE_BACKEND_URL}${API_PATH}`,
   prepareHeaders: (headers, { getState }) => {
     const { accessToken } = (getState()).appReducer;
     if (accessToken) {
@@ -27,19 +25,21 @@ export const appAPI = createApi({
   baseQuery: baseQueryWithAuth,
   endpoints: build => ({
     login: build.mutation({
-      query: requestBody => ({
-        url: '/v3/auth/login',
+      query: payload => ({
+        url: '/transnextgen/v3/auth/login',
         method: 'POST',
         body: {
-          email: requestBody.email,
-          password: requestBody.password,
+          login: payload.login,
+          password: payload.password,
         },
-        formData: true,
+      }),
+      transformResponse: response => ({
+        token: response.result.token,
       }),
     }),
     trips: build.query({
       query: () => ({
-        url: '/v3/orders/trips',
+        url: '/transnextgen/v3/orders/trips',
         method: 'GET',
       }),
     }),
