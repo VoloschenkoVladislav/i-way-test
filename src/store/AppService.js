@@ -38,15 +38,17 @@ export const appAPI = createApi({
       }),
     }),
     trips: build.query({
-      query: () => ({
+      query: page => ({
         url: '/transnextgen/v3/orders/trips',
         method: 'GET',
+        params: { page },
       }),
+      transformResponse: response => response.result,
     }),
   }),
 });
 
 export const {
   useLoginMutation,
-  useLazyTripsQuery
+  useTripsQuery
 } = appAPI;
