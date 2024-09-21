@@ -6,6 +6,7 @@ import { LoginWrap } from './Login';
 import { Trips } from './Trips';
 import { Provider } from 'react-redux';
 import { setupStore } from '../store/store';
+import { HeaderMenu } from './HeaderMenu';
 
 const store = setupStore();
 
@@ -18,7 +19,7 @@ const App = () => {
           <Route path={PATHS.login} element={<LoginWrap />} />
           <Route element={<AuthRoute />}>
             <Route path='/' element={<Navigate to={PATHS.trips} replace />} />
-            <Route path={PATHS.trips} element={<Trips />} />
+            <Route path={PATHS.trips} element={<HeaderMenu><Trips /></HeaderMenu>} />
           </Route>
         </Routes>
       </BrowserRouter>
