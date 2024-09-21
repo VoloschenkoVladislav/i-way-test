@@ -9,7 +9,12 @@ const initialState = {
 export const appSlice = createSlice({
   name: 'app',
   initialState,
-  reducers: {},
+  reducers: {
+    logout: state => {
+      state.accessToken = '';
+      Cookies.remove('access_token');
+    }
+  },
   extraReducers: builder => {
     builder
       .addMatcher(appAPI.endpoints.login.matchFulfilled, (state, action) => {
@@ -21,5 +26,7 @@ export const appSlice = createSlice({
       })
   }
 });
+
+export const { logout } = appSlice.actions;
 
 export default appSlice.reducer;
