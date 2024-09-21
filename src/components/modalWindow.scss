@@ -1,0 +1,24 @@
+.modal-window__blur {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(200, 200, 200, 0.8);
+  backdrop-filter: blur(2px);
+}
+
+.modal-window {
+  background-color: #FFF;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px #999;
+  width: 100%;
+  max-width: 650px;
+  margin: 10px;
+  padding: 35px;
+  min-height: 300px;
+}

@@ -2,22 +2,17 @@ import React, { useMemo, useRef, useState } from 'react';
 import { Spin, Button, Input, Space, Table } from 'antd';
 import { useTripsQuery } from '../store/AppService';
 import { SearchOutlined } from '@ant-design/icons';
+import { ModalWindow } from './ModalWindow';
+import { TripDetails } from './TripDetails';
+import { statuses } from '../constants/statuses';
 import './trips.scss';
 
 const { Column } = Table;
-const statuses = {
-  0: 'Ожидание обработки',
-  1: 'Обработка',
-  2: 'Принято',
-  3: 'Завершённый',
-  4: 'Отменено без штрафа',
-  5: 'Отменено со штрафом',
-  6: 'Неоплаченный',
-  7: 'Измененный',
-}
 
 export const Trips = () => {
   const [ page, setPage ] = useState(1);
+  const [ showTripDetails, setShowTripDetails ] = useState(false);
+  const [ details, setDetails ] = useState(null);
   const { data: trips, isFetching: isTripsFetching } = useTripsQuery(page);
 
   const shortTripsData = useMemo(() => {
@@ -27,6 +22,7 @@ export const Trips = () => {
         location_address: order.location_address,
         destination_address: order.destination_address,
         status: order.status,
+        passengers: order.passengers,
       }));
     }
     return null;
@@ -111,6 +107,13 @@ export const Trips = () => {
   return (
     <div>
       {
+        showTripDetails
+        ? <ModalWindow onClose={() => setShowTripDetails(false)}>
+          <TripDetails {...details} />
+        </ModalWindow>
+        : null
+      }
+      {
         isTripsFetching
         ? <Spin className='absolute-center' />
         : <Table
@@ -123,6 +126,14 @@ export const Trips = () => {
             current: page,
           }}
           rowKey='order_id'
+          onRow={
+            record => ({
+              onClick: () => {
+                setDetails(record);
+                setShowTripDetails(true);
+              }
+            })
+          }
         >
           <Column title='ID заказа' dataIndex='order_id' key='order_id' {...getColumnSearchProps('order_id', 'ID заказа')} />
           <Column title='Адрес местоположения' dataIndex='location_address' key='location_address' />
