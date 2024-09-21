@@ -1,5 +1,5 @@
 const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+// const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -8,14 +8,16 @@ module.exports = {
   mode: 'development',
   entry: './src/index.jsx',
   output: {
-    filename: '[contenthash].bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
+    clean: false,
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HTMLWebpackPlugin({
-      template: './public/index.html',
-    }),
+    // new HTMLWebpackPlugin({
+    //   template: './public/index.html',
+    //   cache: false,
+    // }),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -25,11 +27,6 @@ module.exports = {
       ],
     }),
   ],
-  performance: {
-    hints: false,
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
-  },
   resolve: {
     descriptionFiles: ['package.json'],
     extensions: ['...', '.json', '.jsx', '.js'],
@@ -58,14 +55,19 @@ module.exports = {
       },
     ],
   },
-  // devServer: {
-  //   port: process.env.DEV_SERVER_PORT,
-  //   open: true,
-  //   historyApiFallback: {
-  //     index: 'index.html',
-  //   },
-  //   proxy: {
-  //     '/v3': process.env.SERVER_ADDRESS,
-  //   },
-  // },
+  devServer: {
+    port: '3000',
+    open: true,
+    historyApiFallback: {
+      index: 'index.html',
+    },
+    proxy: [
+      {
+        context: ['/transnextgen'],
+        target: 'https://transstage1.iwayex.com',
+        changeOrigin: true,
+        secure: false,
+      },
+    ],
+  },
 };
