@@ -77,7 +77,7 @@ export const TripDetails = props => {
       <DetailItem title='Адрес местоположения' value={location_address} />
       <DetailItem title='Целевой адрес' value={destination_address} />
       <DetailItem title='Статус' value={statuses[status]} />
-      <Collapse items={passengersCollapse} />
+      <Collapse items={passengersCollapse} className='trips-details__collapse' />
     </div>
   );
 }

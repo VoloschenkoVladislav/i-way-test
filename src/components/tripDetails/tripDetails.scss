@@ -12,3 +12,12 @@
   padding: 8px 4px;
   width: 100%;
 }
+
+.trips-details__collapse {
+  margin-top: 10px;
+}
+
+:where(.css-dev-only-do-not-override-qnu6hi).trips-details__collapse .ant-collapse-content>.ant-collapse-content-box {
+  padding: 0;
+  overflow-x: scroll;
+}
