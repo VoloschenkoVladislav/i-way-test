@@ -5,10 +5,11 @@ import { useSelector } from 'react-redux';
 import { Button, Form, Input, Typography } from 'antd';
 import './login.scss';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const LoginForm = () => {
   const [ login ] = useLoginMutation();
+  const error = useSelector(state => state.appReducer.loginError);
 
   const handleSubmit = ({ username, password }) => {
     login({ login: username, password });
@@ -70,6 +71,9 @@ const LoginForm = () => {
             Войти
           </Button>
         </Form.Item>
+        <div className="login-form__error-label-box">
+          <Text type='danger'>{error}</Text>
+        </div>
       </Form>
     </div>
   );
