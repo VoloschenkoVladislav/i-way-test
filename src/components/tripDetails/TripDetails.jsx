@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, Collapse, Typography } from 'antd';
-import { statuses } from '../constants/statuses';
+import { statuses } from '../../constants/statuses';
 import './tripDetails.scss';
 
 const { Title, Text } = Typography;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useLoginMutation } from '../store/AppService';
+import { useLoginMutation } from '../../store/AppService';
 import { useSelector } from 'react-redux';
 import { Button, Form, Input } from 'antd';
 import './login.scss';

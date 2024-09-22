@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router';
-import { PATHS } from '../constants/path';
+import { PATHS } from '../../constants/path';
 import { useSelector } from 'react-redux';
 
 

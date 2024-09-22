@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { useDispatch } from 'react-redux';
-import { logout } from '../store/AppSlice';
+import { logout } from '../../store/AppSlice';
 
 const { Header } = Layout;
 

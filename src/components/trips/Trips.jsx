@@ -1,10 +1,10 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { Spin, Button, Input, Space, Table } from 'antd';
-import { useTripsQuery } from '../store/AppService';
+import { useTripsQuery } from '../../store/AppService';
 import { SearchOutlined } from '@ant-design/icons';
-import { ModalWindow } from './ModalWindow';
-import { TripDetails } from './TripDetails';
-import { statuses } from '../constants/statuses';
+import { ModalWindow } from '../modalWindow/ModalWindow';
+import { TripDetails } from '../tripDetails/TripDetails';
+import { statuses } from '../../constants/statuses';
 import './trips.scss';
 
 const { Column } = Table;
