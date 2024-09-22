@@ -34,8 +34,9 @@ export const Trips = () => {
     confirm();
     setSearchText(selectedKeys[0]);
   };
-  const handleReset = clearFilters => {
+  const handleReset = (clearFilters, confirm) => {
     clearFilters();
+    confirm();
     setSearchText('');
   };
   const getColumnSearchProps = (dataIndex, title) => ({
@@ -70,7 +71,7 @@ export const Trips = () => {
             Фильтр
           </Button>
           <Button
-            onClick={() => clearFilters && handleReset(clearFilters)}
+            onClick={() => clearFilters && handleReset(clearFilters, confirm)}
             size='small'
             style={{
               width: 90,
@@ -138,7 +139,14 @@ export const Trips = () => {
           <Column title='ID заказа' dataIndex='order_id' key='order_id' {...getColumnSearchProps('order_id', 'ID заказа')} />
           <Column title='Адрес местоположения' dataIndex='location_address' key='location_address' />
           <Column title='Целевой адрес' dataIndex='destination_address' key='destination_address' />
-          <Column title='Статус' dataIndex='status' key='status' render={status => statuses[status]} />
+          <Column
+            title='Статус'
+            dataIndex='status'
+            key='status'
+            render={status => statuses[status]}
+            filters={Object.keys(statuses).map(key => ({ text: statuses[key], value: key }))}
+            onFilter={(value, record) => record.status.toString() === value}
+          />
         </Table>
       }
     </div>
