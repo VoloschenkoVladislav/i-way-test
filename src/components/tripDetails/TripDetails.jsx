@@ -47,8 +47,8 @@ const Passengers = ({ passengers }) => {
 const DetailItem = ({ title, value }) => {
   return (
     <div className='trips-details__detail-item'>
-      <Text strong>{title}</Text>
-      <Text>{value}</Text>
+      <Text strong className='trips-details__detail-item__title'>{title}</Text>
+      <Text className='trips-details__detail-item__value'>{value}</Text>
     </div>
   );
 };

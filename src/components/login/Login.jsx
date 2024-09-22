@@ -2,8 +2,10 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useLoginMutation } from '../../store/AppService';
 import { useSelector } from 'react-redux';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, Typography } from 'antd';
 import './login.scss';
+
+const { Title } = Typography;
 
 const LoginForm = () => {
   const [ login ] = useLoginMutation();
@@ -14,6 +16,7 @@ const LoginForm = () => {
 
   return (
     <div className="login-form">
+      <Title level={2}>Авторизация</Title>
       <Form
         name='basic'
         labelCol={{

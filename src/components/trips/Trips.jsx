@@ -118,6 +118,7 @@ export const Trips = () => {
         isTripsFetching
         ? <Spin className='absolute-center' />
         : <Table
+          className='trips-table'
           dataSource={shortTripsData}
           pagination={{
             onChange: page => setPage(page),
@@ -137,8 +138,8 @@ export const Trips = () => {
           }
         >
           <Column title='ID заказа' dataIndex='order_id' key='order_id' {...getColumnSearchProps('order_id', 'ID заказа')} />
-          <Column title='Адрес местоположения' dataIndex='location_address' key='location_address' />
-          <Column title='Целевой адрес' dataIndex='destination_address' key='destination_address' />
+          <Column title='Адрес местоположения' dataIndex='location_address' key='location_address' responsive={['sm']} />
+          <Column title='Целевой адрес' dataIndex='destination_address' key='destination_address' responsive={['sm']} />
           <Column
             title='Статус'
             dataIndex='status'
