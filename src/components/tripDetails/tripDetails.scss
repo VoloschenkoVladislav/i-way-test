@@ -7,6 +7,7 @@
 
 .trips-details__detail-item {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 8px 4px;
@@ -28,4 +29,19 @@
 
 .trips-details__detail-item__value {
   text-align: end;
+}
+
+@media screen and (width < 750px) {
+  .trips-details__detail-item__title {
+    text-align: start;
+  }
+  
+  .trips-details__detail-item__value {
+    text-align: start;
+  }
+
+  .trips-details__detail-item {
+    flex-direction: column;
+    align-items: start;
+  }
 }
