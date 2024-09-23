@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseQuery = fetchBaseQuery({
+  baseUrl: `${process.env.BASE_BACKEND_URL || ''}`,
   prepareHeaders: (headers, { getState }) => {
     const { accessToken } = (getState()).appReducer;
     if (accessToken) {

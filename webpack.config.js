@@ -1,10 +1,11 @@
 const path = require('path');
-// const HTMLWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 
-module.exports = {
+module.exports = env => ({
   mode: 'development',
   entry: './src/index.jsx',
   output: {
@@ -13,11 +14,10 @@ module.exports = {
     clean: false,
   },
   plugins: [
+    new Dotenv({
+      path: '.env',
+    }),
     new CleanWebpackPlugin(),
-    // new HTMLWebpackPlugin({
-    //   template: './public/index.html',
-    //   cache: false,
-    // }),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -26,6 +26,9 @@ module.exports = {
         },
       ],
     }),
+    // new webpack.DefinePlugin({
+    //   'process.env.BASE_BACKEND_URL': JSON.stringify(env.BASE_BACKEND_URL),
+    // })
   ],
   resolve: {
     descriptionFiles: ['package.json'],
@@ -70,4 +73,4 @@ module.exports = {
       },
     ],
   },
-};
+});
